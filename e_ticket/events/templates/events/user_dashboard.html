@@ -1,0 +1,61 @@
+{% extends "events/base.html" %}
+{% load static %}
+{% block content %}
+
+<h1 class="text-center my-4">User Dashboard</h1>
+
+<div id="events-container" class="container mb-4"></div>
+
+<div id="tickets-form" class="tickets-form" style="display: none; position: relative;">
+    <h2 id="event-name" class="mb-3"></h2>
+    <div id="tickets-container"></div>
+    <div id="order-summary-container"></div>
+    <button class="close-button" style="position: absolute; bottom: 10px; right: 10px;">Close</button>
+</div>
+
+<style>
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.event {
+    flex: 1;
+    min-width: 250px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+.tickets-form {
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    background-color: #fff;
+    width: 40%;
+    margin: 10px;
+}
+
+.ticket, .order-item, .order-total {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+}
+
+#tickets-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+</style>
+
+<script>
+const userId = {{ user.id }};
+</script>
+
+<script src="{% static 'user_dashboard.js' %}"></script>
+
+{% endblock %}
